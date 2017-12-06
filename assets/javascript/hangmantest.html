@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hangman</title>
+</head>
+
+<body>
+    <h1>Hangman - Javascript Keywords</h1>
+  	<p> Enjoy Playing by guessing the word</p>
+   
+<script type="text/javascript">
+	
+
+//Create array for words
+    var words = ["code","hangman","from","scratch"];
+    
+    //Choose word randomly
+    var randomword = words[Math.floor(Math.random() * words.length)];
+    console.log(randomword)
+    
+    //Make array for random words chosen by computer
+    var computerchoice = [];
+        for (var i = 0; i < randomword.length; i++) {
+            computerchoice[i] = "_";
+        }
+        console.log(computerchoice)
+    
+    var remainingletters = randomword.length;
+    console.log(remainingletters)
+        
+        //The playing loop
+        while (remainingletters > 0) {
+            //Show players progress and the number of letters remaining to
+            alert("This is the number of remaining letters:\n" + computerchoice.join(" "));
+            
+            //Prompt player to guess
+            var guess = prompt("Guess a letter or click 'Cancel' to stop the game.");
+            if (prompt === null) {
+                //Leave the game
+                break;
+            } else if (guess.length !== 1) {
+                alert("Please enter one single letter.");
+            } else {
+                //Update match with guess
+                for (var j = 0; j < word.length; j++) {
+                    if (word[j] === guess) {
+                        answer[j] = guess;
+                        remainingLetters--;
+                    }
+                }
+            }
+            //End of playing loop
+        }
+        
+        //Show answer and congratulate the player
+        alert(answer.join(" "));
+        alert("Good work! The right answer is " + word);
+
+
+</script>
+</body>
+</html>

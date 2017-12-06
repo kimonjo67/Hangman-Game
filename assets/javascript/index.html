@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<title>Hangman Javascript</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" type="assets/css/style.css" href="">
+</head>
+<body>
+<div class="container"></div>
+<div class="jumbotron">
+  <h1 class="display-3">Play Hangman!!!</h1>
+  <p class="lead">How good are you?</p>
+  <hr class="my-4">
+  <p> Save the hanging man by guessing the right letters</p>
+</div>
+
+	<p>Start playing by guessing the letters of the word. Good luck</p>
+
+<!-- Create generic DIVs to recieve info from the javascrip game script. -->
+	<div id="wordsarray"></div>
+	<div id="randomguessedword"></div>
+	<div id="currentword"></div>
+	<div id="blankunderscores"></div>
+	<div id="incorrectguesses"></div>
+	<div id="wins"></div>
+	<div id="loses"></div>
+
+<script type="text/javascript">
+// Array of words to be guessed by computer.
+	var wordsarray = ["oranges", "apple","bananas","berries"];
+		console.log(wordsarray);
+// Words randomly guessed by computer.
+	var randomguessedword = wordsarray[Math.floor(Math.random()*wordsarray.length)];
+		console.log(randomguessedword);
+//  Blank array space for the word selected and posted to the html for user to see underscore
+	var currentword = document.getElementById('currentword');
+		console.log(currentword);
+	var blankunderscores = [];
+		console.log(blankunderscores);
+	var invalidEntry = [];
+    var lives = 10;
+    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h",
+        "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+        "t", "u", "v", "w", "x", "y", "z"];
+        console.log(alphabet);
+// Incorrect words guessed by the player that will be and will be sent to html to print. 
+	var incorrectguesses = document.getElementById('incorrectguesses');
+		console.log(incorrectguesses);
+	
+
+// looping through every word in the wordsarry and then posting it to the underscores for player to see.
+ for (var i = 0; i < wordsarray.length; i++){blankunderscores.push("_");
+ 	currentword.innerHTML = blankunderscores.join(" ");
+};
+// function for game to start by creating an event key command
+	document.onkeyup = function(event) {
+
+		// body...
+		 userGuess = event.key;
+// User guesses the key and if it does not match display an error mnessage
+    if(alphabet.indexOf(userGuess) <= -1){
+      alert("Invalid input, please select a letter of the alphabet");
+    }
+// Letters already clicked by user are stored and display an error message
+    else
+      if (invalidEntry.indexOf(userGuess)!=-1){
+      alert("you have already guessed that")
+    }
+  // Letters selected by user are incorrect are
+    else
+      if (randomguessedword.indexOf(userGuess)<=-1){
+      alert ("incorrect guess");
+      inavalidiput.push(userGuess);
+      incorrectguesses.innerHTML = invalidEntry.join(" ");
+    }
+      console.log(invalidEntry);
+    for(var i = 0; i<randomguessedword.length; i++){
+      if(randomguessedword[i]===userGuess){
+        blankunderscores[i]= userGuess;
+        currentword.innerHTML = blankunderscores.join(' ');
+      };
+    };
+   }
+
+</script>
+
+
+</body>
+</html>

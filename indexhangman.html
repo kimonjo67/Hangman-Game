@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Content!</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->  
+</head>
+<body>
+  <h1>Hangman Game</h1>
+<div class="container">
+  <p> Guess the names of fruits</p>
+  <p> You have 10 chances, Good luck</p>
+  <p>Guess word here</p>
+  <div id="word-blanks"></div>
+  <p>Number of Guesses left</p>
+  <div id="guessesLeft">Guesses left</div>
+  <p>Word Letters picked</p>
+  <div id="wrongLetter">Wrong letters</div>
+  <p>Wins</p>
+  <div id="wins"></div>
+  <p>Loses</p>
+  <div id="loses">Loses</div>
+
+  
+
+</div>
+
+<script type="text/javascript">
+   var wordBank = ["oranges","berries","nuts","oats"];
+   var alphabet =["a", "b", "c", "d", "e", "f", "g", "h",
+        "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+        "t", "u", "v", "w", "x", "y", "z"];
+   var wins = 0;
+   var loss = 0;
+   var wrongLetter = [];
+   var guessesLeft = 10;
+   var underScores = [];
+   var userGuesses = [];
+   var randWord;
+   var winCounter = 0;
+
+
+//function
+function startGame(){
+  //Picks a random word
+  randWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+    console.log(randWord);
+  // Creating underscores
+  for (var i = 0; i < randWord.length; i++) 
+  {
+    underScores.push('_');
+  }
+  // Print underscores to the screen
+  document.getElementById("word-blanks").innerHTML = underScores.join(" ");
+
+  // Resets games trials!!
+  wrongLetter = [];
+  guessesLeft = 10;
+
+  //HTML
+  document.getElementById('guessesLeft').innerHTML = guessesLeft;
+}
+
+
+// Counter for wins and loses
+function winLose() {
+  if (winCounter === randWord.length) {
+    // should I put wincounter++ here?????????????????????????????
+    alert("You Won")
+  }
+  else if (guessesLeft === 0) {
+    //Reload page after game ends 
+    location.reload();
+  }
+}
+// Catputer User Guess keys and using events and save them in the var userGuesses
+document.onkeyup = function(event){
+  userGuesses = event.key;
+// Check is letter pressed are alphabets
+    if(alphabet.indexOf(userGuesses) <= -1){
+      alert("Invalid input, please select a letter of the alphabet");
+    }
+// checking if index of randword and the keys userguessed match
+  if (randWord.indexOf(userGuesses) > -1) 
+  {
+    for (var i = 0; i < randWord.length; i++) {
+      if (randWord[i] === userGuesses) {
+        underScores[i] = userGuesses;
+        console.log(underScores);
+        winCounter++;
+        console.log(winCounter)
+        document.getElementById("wins").innerHTML = winCounter;
+        document.getElementById("word-blanks").innerHTML = underScores.join(" ");
+        winLose();
+      }
+    }
+  
+  }
+  else{
+    wrongLetter.push(userGuesses);
+    console.log(wrongLetter);
+    // capture the wrong letters clicked and store them in the id
+    document.getElementById('wrongLetter').innerHTML = wrongLetter;
+    
+
+    guessesLeft--;
+    // when counter get to zero!!!!! add code
+    if (guessesLeft<=0) {
+      alert('You Lost, Game Over')
+    }
+
+
+    console.log(guessesLeft);
+    document.getElementById('guessesLeft').innerHTML = guessesLeft;
+    winLose();
+  }
+
+}
+
+
+// call the function
+startGame();
+winLose();
+
+
+</script>
+
+</body>
+</html

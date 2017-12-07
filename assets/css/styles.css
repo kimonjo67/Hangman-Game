@@ -1,47 +1,69 @@
 h1{
 	border:3px solid silver;
-	font-size: 80px;
+	font-size: 120px;
 	text-align: center;
 	color: white;
 	margin: 15px auto;
-	height: 110px;
+	height: 130px;
 	width:89%;
 }
 body {
 	background-image: url("../images/hang.jpeg");
 	background-repeat: no-repeat;
-	background-size: 800px;
+	background-size: 2000px;
 	background-color: black;
 	padding: 50px;
 }
-p{
+p {
 	color: white;
-	font-size: 20px;
+	font-size: 80px;
 }
 #word-blanks{
 	border:3px solid silver;
-	font-size: 30px;
+	font-size: 100px;
 	color: white;
 	text-align: center;
 	margin: 15px auto;
-	height: 110px;
-	width:89%;
+	height: 120px;
+	width:50%;
 }
 #guessesLeft{
 	border:3px solid silver;
-	font-size: 30px;
+	font-size: 100px;
 	color: white;
 	text-align: center;
 	margin: 15px auto;
 	height: 110px;
-	width:89%;
+	width:50%;
 }
 #wrongLetter{
 	border:3px solid silver;
-	font-size: 30px;
+	font-size: 100px;
 	color: white;
 	text-align: center;
 	margin: 15px auto;
 	height: 110px;
-	width:89%;
+	width:50%;
+}
+#wins {
+	border:3px solid silver;
+	font-size: 100px;
+	color: white;
+	text-align: center;
+	margin: 15px auto;
+	height: 100px;
+	width:50%;
+}
+#loses{
+	border:3px solid silver;
+	font-size: 80px;
+	color: white;
+	text-align: center;
+	margin: 15px auto;
+	height: 100px;
+	width:50%;
+}
+
+
+
 }

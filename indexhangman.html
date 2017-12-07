@@ -9,7 +9,7 @@
 <body>
   <h1>Hangman Game</h1>
 <div class="container">
-  <p> Guess the names of fruits</p>
+  <p> Press any Key to get started and Guess the names of fruits</p>
   <p> You have 10 chances, Good luck</p>
   <p>Guess word here</p>
   <div id="word-blanks"></div>
@@ -105,6 +105,11 @@ document.onkeyup = function(event){
     
 
     guessesLeft--;
+    //lose counter
+    (winCounter !== randWord.length);
+    winCounter++;
+
+    document.getElementById("loses").innerHTML = winCounter;
     // when counter get to zero!!!!! add code
     if (guessesLeft<=0) {
       alert('You Lost, Game Over')
